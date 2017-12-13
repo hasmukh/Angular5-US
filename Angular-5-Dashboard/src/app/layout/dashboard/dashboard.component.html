@@ -1,0 +1,128 @@
+<nav class="navbar navbar-expand-lg">
+     <h2 class="text-muted">DaVinci <small>Home</small></h2>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <!-- Help Panel start -->
+            <li class="nav-item dropdown" ngbDropdown>
+                <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
+                    <i class="fa fa fa-question-circle-o"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right messages" style="background:red;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style=" height:150px; width:550px;">
+                            <li class="media">
+                                <h6 class="mt-0 mb-1">Default Help</h6>
+                            </li>
+                            <li class="media">
+                                <h6 class="mt-0 mb-1"><small>All pages are meant to be generally self explanatory</small></h6>
+                            </li>
+                            <li class="media">
+                                <h6 class="mt-0 mb-1"><small>When in doubt, click on the question-mark icon</small></h6>
+                            </li>
+                            <li class="media">
+                                <h6 class="mt-0 mb-1"><small>When video is available, please click to get a walkthrough of the screen</small></h6>
+                            </li>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12" seperator>
+                            <iframe width="240" height="180" src="https://www.youtube.com/embed/sdeMkRCsbN0" frameborder="0" gesture="media" allowfullscreen>
+                                <p>Your browser does not support iframes.</p>
+                            </iframe>
+                        </div>
+                    </div>
+                </ul>
+            </li>
+             <!-- Help Menu end -->
+             <!-- Theme Panel start -->
+            <!--
+             <li class="nav-item dropdown" ngbDropdown>
+                <a class="nav-link" href="javascript:void(0)" ngbDropdownToggle>
+                    <i class="fa fa-cog"></i> <b class="caret"></b><span class="sr-only">(current)</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right messages">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style=" height:150px; width:550px;">
+                            <li class="media">
+                                <h6 class="mt-0 mb-1"><small>Theme Colors</small></h6>
+                            </li>
+                        </div>
+
+                    </div>
+                </ul>
+            </li>
+            -->
+             <!-- Theme Panel end -->
+        </ul>
+    </div>
+</nav>
+<div [@routerTransition] class="p-3 mb-2 bg-light text-dark">
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'primary'" [icon]="'fa-comments'" [count]="26" [label]="'New Comments!'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'warning'" [icon]="'fa-tasks'" [count]="12" [label]="'New task!'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'success'" [icon]="'fa-shopping-cart'" [count]="124" [label]="'New Orders!'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'danger'" [icon]="'fa-support'" [count]="13" [label]="'New Tickets!'"></app-stat>
+        </div>
+    </div>
+    <hr />
+    <app-timeline></app-timeline>
+    <div class="row">
+        <div class="col-md-6 col-sm-4">
+            <div class="chat-panel card card-default">
+                <div class="card-header">
+                    <i class="fa fa-share-alt-square" aria-hidden="true"></i> LILLY LOCATIONS
+                    <div class=" pull-right" ngbDropdown>
+                        <button class="fa fa-cloud-upload" ngbDropdownToggle>
+                            <span class="caret"></span>
+                        </button>
+                        <button class="fa fa-wrench" ngbDropdownToggle>
+                            <span class="caret"></span>
+                        </button>
+                        <button class="fa fa-expand" ngbDropdownToggle>
+                            <span class="caret"></span>
+                        </button>
+                        <button class="fa fa-trash" ngbDropdownToggle>
+                            <span class="caret"></span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div style="height: 30px;" class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-primary btn-sm">Users</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">Orders</button>
+                    </div>
+                    <div class=" pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-hover="dropdown" data-toggle="dropdown">
+                                Select region
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="col-md-6 col-sm-4">
+                        <div style="height: 345px;width: 500px;" leaflet [leafletOptions]="options">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <app-chat></app-chat>
+        </div>
+    </div>
+    <hr />
+</div>

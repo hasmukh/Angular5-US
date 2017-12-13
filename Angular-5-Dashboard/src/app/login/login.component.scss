@@ -1,0 +1,207 @@
+$topnav-background-color:#222;
+:host {
+    display: block;
+}
+
+body{
+    margin: 0px 0px 0px 0px;
+    font-family:georgia;
+    }
+    
+    #container-fluid-style{
+    width:90%;
+    height:90%;
+    min-width:420px;
+    position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    margin: auto;
+    border-radius: 10px 10px 10px 10px;
+    }
+    
+    #login-box{
+    height:100%;
+    min-height: 450px;
+    min-width: 600px;
+    background-color:rgba(213,43,30,0.85);
+    border-radius: 10px 10px 10px 10px;
+    }
+    
+    #lilly-image-div{
+    width:100%;
+    margin: 30px 10px 10px 10px;
+    }
+
+    .form-input-labels{
+        text-align: center;
+    }
+
+    .login-input-field{
+width: 100%;
+height: 40px;
+margin-top: 30px;
+border-radius: 5px;
+    }
+
+    #login-form{
+        width:40%;
+        margin:auto;
+        display:block;
+        position: relative; 
+    }
+    
+    .labels-format{
+    font-size:20px;
+    color:#F8F8F8;
+    font-family:Segoe UI;
+    font-weight: bold
+    }
+    
+    .custom-notification{
+    font-size:12px;
+    color:#F8F8F8;
+    font-family:Segoe UI;
+    }
+    
+    #login-submit-btn{
+    width:100%;
+    background-color:#101010;
+    color:white;
+    font-family:Segoe UI;
+    font-size:20px;
+    font-weight:bold;
+    border: 1px solid black;
+    margin-top:20px; 
+    }
+    
+    img {
+        display: block;
+        margin: auto;
+        width:18%
+    }
+
+    #login-remember-checkbox{
+        width: 15px;
+        height: 15px;
+        margin-top:30px; 
+        float: left;
+    }
+    #sign-up-heading{
+        margin-top: 30px;
+       text-align: center;
+       color:white;
+       font-weight: bold;
+       font-size: 15px;
+    }
+
+    #remember-me{
+        float: left;
+        margin-top: 27px;
+        margin-left: 5px;
+    }
+
+    #forgot-password{
+        float:right;
+        margin-top: 27px;
+    }
+    
+    
+    
+    
+    
+    
+    
+
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: $topnav-background-color;
+    text-align: center;
+    color: green;
+    padding: 3em;
+    .col-lg-4 {
+        padding: 0;
+    }
+    .input-lg {
+        height: 46px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+    .input-underline {
+        background: 0 0;
+        border: none;
+        box-shadow: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        color: #fff;
+        border-radius: 0;
+    }
+    .input-underline:focus {
+        border-bottom: 2px solid #fff;
+        box-shadow: none;
+    }
+    .rounded-btn {
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        background: $topnav-background-color;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0 25px;
+    }
+    .rounded-btn:hover,
+    .rounded-btn:focus,
+    .rounded-btn:active,
+    .rounded-btn:visited {
+        color: rgba(255, 255, 255, 1);
+        border: 2px solid rgba(255, 255, 255, 1);
+        outline: none;
+    }
+
+    h1 {
+        font-weight: 300;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 36px;
+        small {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+
+    .form-group {
+        padding: 8px 0;
+        input::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        input:-ms-input-placeholder {
+            color:red !important;
+        }
+    }
+    .form-content {
+        padding: 40px 0;
+    }
+    .user-avatar {
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+}

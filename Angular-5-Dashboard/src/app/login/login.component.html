@@ -1,0 +1,29 @@
+<div class="container-fluid" id="container-fluid-style">
+
+  <div class="row" id="login-box">
+    <div id="lilly-image-div">
+      <img src="assets/images/new-lilly-logo.png" />
+
+      <form id="login-form" (submit)="checkLogin($event)">
+        <p id="sign-up-heading">Hello! Sign in with your UserId and Password</p>
+        <div class="form-input-labels">
+          <input type="userid" class="login-input-field" aria-describedby="emailHelp" placeholder="User ID" required>
+        </div>
+        <div class="form-input-labels">
+          <input type="password" class="login-input-field" placeholder="Password" required>
+        </div>
+        <div class="form-check">
+          <div class="labels-format">
+            <input type="checkbox" id="login-remember-checkbox">
+            <p id="remember-me" class="custom-notification">Remember Me</p>
+            <p id="forgot-password" class="custom-notification">Forgot Password</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="login-submit-btn">Login</button>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>

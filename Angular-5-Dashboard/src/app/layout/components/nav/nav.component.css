@@ -1,0 +1,74 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #444d58;
+}
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: block;
+    color: #5d6b7a;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    
+}
+li a
+{
+    color: white;
+}
+
+li a:hover, .dropdown-nav:hover .dropbtn {
+    background-color: #5d6b7a;
+    z-index: 1000;
+}
+
+li.dropdown-nav {
+    display: inline-block;
+    
+}
+
+.dropdown-content {
+    display: none;
+     position: absolute; 
+    background-color: #5d6b7a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;  
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #607D8B}
+
+.dropdown-nav:hover .dropdown-content {
+    display: list-item;
+}
+input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    text-align: left;
+    background-color: white;
+    background-image: url('http://www.pvhc.net/img3/ghfdkufafgdukrsgjvwc.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    margin: 10px;
+    float: right;
+    background-color: #263238;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 20%;
+}
