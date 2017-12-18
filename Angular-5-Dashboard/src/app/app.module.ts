@@ -22,6 +22,7 @@ import { DashboardModule } from './layout/dashboard/dashboard.module';
 import { LoginserService } from './loginser.service';
 import { AuthguardGuard } from './authguard.guard';
 import { HttpModule } from '@angular/http';
+import { DragulaModule } from 'ng2-dragula';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
         canActivate: [AuthguardGuard],
         component: DashboardComponent
     }
-]
+];
 @NgModule({
     imports: [
         HttpModule,
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
                 deps: [HttpClient]
             }
         }),
-        AppRoutingModule
+        AppRoutingModule,
+        DragulaModule
     ],
     declarations: [AppComponent],
     providers: [AuthGuard, LoginserService],

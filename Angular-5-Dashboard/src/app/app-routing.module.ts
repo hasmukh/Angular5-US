@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
     { path: 'layout/suggestion', loadChildren: './layout/suggestion/suggestion.module#SuggestionModule' },
     { path: 'layout/dashboard', loadChildren: './layout/dashboard/dashboard.module#DashboardModule' },
+    { path: 'layout/create-dashboard', loadChildren: './layout/create-dashboard/create-dashboard.module#CreateDashboardModule' },
     { path: '**', redirectTo: 'not-found' },
 ];
 
