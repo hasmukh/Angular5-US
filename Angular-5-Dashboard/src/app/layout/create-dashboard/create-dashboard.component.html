@@ -1,22 +1,52 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            All KPIs list here
-            <!--
-                Write design for left pane
-            -->
+            <div class="row">
+                <div class="col-sm-12">
+                    List of KPIs
+                    <ul [dragula]='"kpibag"'>
+                        <li data-id="IDKPIBAG1">1-KPI</li>
+                        <li data-id="IDKPIBAG2">2-KPI</li>
+                        <li data-id="IDKPIBAG2">3-KPI</li>
+                        <li data-id="IDKPIBAG2">4-KPI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    List of Charts
+                    <ul [dragula]='"chartbag"'>
+                        <li data-id="Chart1">Chart 1</li>
+                        <li data-id="Chart2">Chart 2</li>
+                        <li data-id="Chart3">Chart 3</li>
+                        <li data-id="Chart4">Chart 4</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="col-sm-8" [dragula]='"boxes"'>
             <div class="row box">
-                <div class="col-sm-2 col-md-2 small-box"><span class="empty-box">Add</span></div>
-                <div class="col-sm-2 col-md-2 small-box"><span class="empty-box">Add</span></div>
-                <div class="col-sm-2 col-md-2 small-box"><span class="empty-box">Add</span></div>
-                <div class="col-sm-2 col-md-2 small-box-last"><span class="empty-box">Add</span></div>
+                <div class="col-sm-2 col-md-2 small-box" id="firstkpi" [dragula]='"kpibag"'>
+                    <span class="empty-box">Add</span>
+                </div>
+                <div class="col-sm-2 col-md-2 small-box" id="secondkpi" [dragula]='"kpibag"'>
+                    <span class="empty-box">Add</span>
+                </div>
+                <div class="col-sm-2 col-md-2 small-box" id="thirdkpi" [dragula]='"kpibag"'>
+                    <span class="empty-box">Add</span>
+                </div>
+                <div class="col-sm-2 col-md-2 small-box-last" id="forthkpi" [dragula]='"kpibag"'>
+                    <span class="empty-box">Add</span>
+                </div>
             </div>
 
             <div class="row box">
-                <div class="col-sm-5 medium-box medium-box-first"><span class="empty-box">Add</span></div>
-                <div class="col-sm-5 medium-box"></div>
+                <div class="col-sm-5 medium-box medium-box-first" id="charbox1" [dragula]='"chartbag"'>
+                    <span class="empty-box">Add</span>
+                </div>
+                <div class="col-sm-5 medium-box" id="chartbox2" [dragula]='"chartbag"'>
+                    <span class="empty-box">Add</span>
+                </div>
             </div>
             <div class="row box">
                 <div class="col-sm-12 large-box"></div>
