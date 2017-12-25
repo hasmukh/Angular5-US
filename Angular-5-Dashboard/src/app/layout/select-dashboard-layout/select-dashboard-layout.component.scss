@@ -1,0 +1,29 @@
+
+.layout{
+    height: 100%;
+    width: 100%;
+}
+
+.layout-active {
+    border: 1px solid gray;
+}
+
+.space {
+    content: 'Hello';
+}
+
+.layout-title-text {
+    font-weight: bolder;
+    color: gray;
+}
+
+.btn-container {
+    text-align: right;
+}
+
+.btn-container button{
+    background-color: gray;
+    color: white;
+    font-weight: bolder;
+    width: 150px;
+}

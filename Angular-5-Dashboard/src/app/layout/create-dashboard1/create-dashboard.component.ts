@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, OnInit, OnDestroy, ViewEncapsulation, ElementRef, style } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewEncapsulation, ElementRef, style } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
 import { CreateDashboardService } from './create-dashboard.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-create-dashboard',
@@ -9,18 +8,8 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./create-dashboard.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class CreateDashboardComponent implements OnInit, OnDestroy {
-
-    private layoutStyle: number[] = [];
-
-    constructor(private dragulaService: DragulaService, private elRef: ElementRef, private cds: CreateDashboardService,
-        private route: ActivatedRoute) {
-        this.route.params.subscribe((params) => {
-            this.layoutStyle = params['layout']
-                      .split('')
-                      .map((n) => parseInt(n, 10));
-        });
-
+export class CreateDashboardComponent implements OnInit {
+    constructor(private dragulaService: DragulaService, private elRef: ElementRef, private cds: CreateDashboardService) {
         dragulaService.setOptions('kpibag', {
             copy: true
         });
@@ -28,11 +17,26 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
             copy: true
         });
 
+        dragulaService.drag.subscribe((value) => {
+            const [bname, source, target] = value;
+            /* console.log('Target dataset => ');
+            console.log(target.dataset);
+            console.log('Source dataset => ');
+            console.log(source.dataset.id);
+            console.log(`Drag: ${value[0]}`); */
+            this.onDrag(value.slice(1));
+        });
+
         dragulaService.drop.subscribe((value) => {
             console.log(value);
             const [bag, source, target] = value;
             switch (bag) {
                 case 'kpibag':
+                    /* console.log('Target => ');
+                    console.log(target);
+                    console.log('Source Dataset=> ');
+                    console.log(source.dataset.id);
+                    console.log(`Drop: ${value[0]}`); */
                     this.onDropKpi(value.slice(1), source.dataset.id);
                     break;
                 case 'chartbag':
@@ -46,19 +50,25 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.cds.getDashboardSettings()
+        /* this.cds.getDashboardSettings()
             .subscribe((data) => {
                 console.log('------ Data from Fake Service ------');
                 console.log(data);
-                // this.title = data.title;
             },
             (error) => console.error(error),
-            () => console.log('Successfully completed'));
+            () => console.log('Successfully completed')); */
+    }
+
+    onDrag(args) {
+        console.log('Drag event called');
+        console.log(args);
     }
 
     onDropKpi(args, kpiId) {
-
+        // console.log('Drop event called');
+        // console.log(args[1].id);
         // using kpiId we can get content of KPIs
+
         if (args[1]) {
             if (args[1].parentElement.hasChildNodes('drop-box')) {
                 const el = document.getElementById(args[1].id);
@@ -74,6 +84,7 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
         if (args[1]) {
             if (args[1].parentElement.hasChildNodes('inner-drop-box-1')) {
                 const el = document.getElementById(args[1].id);
+                // el.innerHTML = `<img src="${imgURL}" style="width:100%;height:100%" alt="chart">`;
                 el.innerHTML = `<div class="thumbnail" id="thumbnail">
                                     <img src="${imgURL}" />
                                     <a id="close">x</a>
@@ -93,10 +104,5 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
         spanNode.setAttribute('class', 'add-content');
         spanNode.innerText = 'ADD';
         parentNode.appendChild(spanNode);
-    }
-
-    ngOnDestroy() {
-        this.dragulaService.destroy('kpibag');
-        this.dragulaService.destroy('chartbag');
     }
 }

@@ -18,7 +18,8 @@ const routes: Routes = [
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'suggestion', loadChildren: './suggestion/suggestion.module#SuggestionModule' },
             { path: 'blogpostlist', loadChildren: './blogpostlist/blogpostlist.module#BlogpostlistModule' },
-            { path: 'create-dashboard', loadChildren: './create-dashboard/create-dashboard.module#CreateDashboardModule'}
+            { path: 'create-dashboard/:layout', loadChildren: './create-dashboard/create-dashboard.module#CreateDashboardModule'},
+            { path: 'select-dashboard', loadChildren: './select-dashboard-layout/select-dashboard-layout.module#SelectDashboardLayoutModule'}
         ]
     }
 ];

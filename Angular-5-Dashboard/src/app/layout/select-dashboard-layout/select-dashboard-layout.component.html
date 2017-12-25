@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <span class="h3 layout-title-text">Choose a Preset Dashboard Layout</span>
+        </div>
+        <div class="col-sm-3 btn-container">
+            <button class="btn btn-choose btn-lg" routerLink="/create-dashboard/{{selectedLayout}}">Choose</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" id="dashboard1" (click)="selectLayout(421, 1)" [ngClass]="{'layout-active': highlight === 1}">
+            <img class="layout" src="assets/images/dashboard/1.png">
+        </div>
+        <div class="col-sm-4" id="dashboard2" (click)="selectLayout(412, 2)" [ngClass]="{'layout-active': highlight === 2}">
+            <img class="layout" src="assets/images/dashboard/2.png">
+        </div>
+        <div class="col-sm-4" id="dashboard3" (click)="selectLayout(241, 3)" [ngClass]="{'layout-active': highlight === 3}">
+            <img class="layout" src="assets/images/dashboard/3.png">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" id="dashboard4" (click)="selectLayout(142, 4)" [ngClass]="{'layout-active': highlight === 4}">
+            <img class="layout" src="assets/images/dashboard/4.png">
+        </div>
+        <div class="col-sm-4" id="dashboard5" (click)="selectLayout(124, 5)" [ngClass]="{'layout-active': highlight === 5}">
+            <img class="layout" src="assets/images/dashboard/5.png">
+        </div>
+        <div class="col-sm-4" id="dashboard6" (click)="selectLayout(154, 6)" [ngClass]="{'layout-active': highlight === 6}">
+            <img class="layout" src="assets/images/dashboard/6.png">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px">
+        <div class="col-sm-12 text-center btn-container">
+            <button routerLink="/create-dashboard/{{selectedLayout}}" class="btn btn-choose btn-lg">Choose</button>
+        </div>
+    </div>
+</div>
