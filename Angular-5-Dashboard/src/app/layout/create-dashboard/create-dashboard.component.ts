@@ -12,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 export class CreateDashboardComponent implements OnInit, OnDestroy {
 
     private layoutStyle: number[] = [];
+    private dragType: any;
 
     constructor(private dragulaService: DragulaService, private elRef: ElementRef, private cds: CreateDashboardService,
         private route: ActivatedRoute) {
         this.route.params.subscribe((params) => {
             this.layoutStyle = params['layout']
-                      .split('')
-                      .map((n) => parseInt(n, 10));
+                .split('')
+                .map((n) => parseInt(n, 10));
         });
 
         dragulaService.setOptions('kpibag', {
@@ -28,15 +29,27 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
             copy: true
         });
 
+        dragulaService.drag.subscribe((value) => {
+            const [bname, source, target] = value;
+            this.onDrag(value.slice(1));
+        });
         dragulaService.drop.subscribe((value) => {
             console.log(value);
             const [bag, source, target] = value;
             switch (bag) {
                 case 'kpibag':
-                    this.onDropKpi(value.slice(1), source.dataset.id);
+                    if (value[2]) {
+                        if (value[2].dataset.type !== this.dragType) {
+                            this.onDropKpi(value.slice(1), source.dataset.id, source.dataset.imgurl);
+                        }
+                    }
                     break;
                 case 'chartbag':
-                    this.onDropChart(value.slice(1), source.dataset.id, source.dataset.imgurl);
+                    if (value[2]) {
+                        if (value[2].dataset.type !== this.dragType) {
+                            this.onDropChart(value.slice(1), source.dataset.id, source.dataset.imgurl);
+                        }
+                    }
                     break;
 
                 default:
@@ -56,43 +69,50 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
             () => console.log('Successfully completed'));
     }
 
-    onDropKpi(args, kpiId) {
+    onDrag(args) {
+        this.dragType = args[1].dataset.type;
+        console.log('Drag event called');
+        console.log(args);
+    }
 
+    onDropKpi(args, kpiId, imgURL) {
         // using kpiId we can get content of KPIs
         if (args[1]) {
             if (args[1].parentElement.hasChildNodes('drop-box')) {
                 const el = document.getElementById(args[1].id);
                 console.log(el.dataset);
-                el.innerHTML = `<small>${kpiId} Dropped here </small>`;
-                el.style.backgroundColor = 'gray';
+                el.querySelectorAll('.drag-item-name')[0].remove();
+                el.querySelectorAll('.image-container')[0].innerHTML = `<img src="${imgURL}"
+                                                                    style="width:100%; height:100%"
+                                                                    class="dashboard-chart" alt="chart">`;
+                el.querySelectorAll('.image-container')[0].classList.add('image-droped');
+                el.querySelectorAll('.image-container')[0].classList.remove('add-content');
+                // el.innerHTML = `<small>${kpiId} Dropped here </small>`;
+                // el.style.backgroundColor = 'gray';
             }
         }
     }
 
     onDropChart(args, chartId, imgURL) {
-        // using chartId we can get content of charts
         if (args[1]) {
             if (args[1].parentElement.hasChildNodes('inner-drop-box-1')) {
                 const el = document.getElementById(args[1].id);
-                el.innerHTML = `<div class="thumbnail" id="thumbnail">
-                                    <img src="${imgURL}" />
-                                    <a id="close">x</a>
-                                    </div>`;
-                this.elRef.nativeElement.querySelector('#close')
-                    .addEventListener('click', this.closeMe.bind(this));
+                el.querySelectorAll('.drag-item-name')[0].remove();
+                el.querySelectorAll('.image-container')[0].innerHTML = `<img src="${imgURL}"  class="dashboard-chart"
+                                                                        style="width:100%;height:100%" alt="chart">`;
+                el.querySelectorAll('.image-container')[0].classList.add('image-droped');
+                el.querySelectorAll('.image-container')[0].classList.remove('add-content');
             }
         }
 
     }
 
-    closeMe(event) {
-        const removableElement = document.getElementById('thumbnail');
-        const parentNode = removableElement.parentNode;
-        removableElement.parentNode.removeChild(removableElement);
-        const spanNode = document.createElement('span');
-        spanNode.setAttribute('class', 'add-content');
-        spanNode.innerText = 'ADD';
-        parentNode.appendChild(spanNode);
+    removeImage(event) {
+        const removeChildTag = event.target.parentNode.querySelectorAll('.dashboard-chart')[0]
+        event.target.parentNode.querySelectorAll('.image-container')[0].removeChild(removeChildTag); \
+        event.target.parentNode.querySelectorAll('.image-container')[0].classList.remove('image-droped');
+        event.target.parentNode.querySelectorAll('.image-container')[0].classList.add('add-content');
+        event.target.parentNode.querySelectorAll('.image-container')[0].innerHTML = 'ADD';
     }
 
     ngOnDestroy() {
