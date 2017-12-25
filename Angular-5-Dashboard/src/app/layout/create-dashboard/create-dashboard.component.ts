@@ -108,8 +108,8 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
     }
 
     removeImage(event) {
-        const removeChildTag = event.target.parentNode.querySelectorAll('.dashboard-chart')[0]
-        event.target.parentNode.querySelectorAll('.image-container')[0].removeChild(removeChildTag); \
+        const removeChildTag = event.target.parentNode.querySelectorAll('.dashboard-chart')[0];
+        event.target.parentNode.querySelectorAll('.image-container')[0].removeChild(removeChildTag);
         event.target.parentNode.querySelectorAll('.image-container')[0].classList.remove('image-droped');
         event.target.parentNode.querySelectorAll('.image-container')[0].classList.add('add-content');
         event.target.parentNode.querySelectorAll('.image-container')[0].innerHTML = 'ADD';
