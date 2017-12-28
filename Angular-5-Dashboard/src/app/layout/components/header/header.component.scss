@@ -17,10 +17,26 @@ $topnav-background-color: #fff;
         .media {
             border-bottom: 1px solid #ddd;
             padding: 5px 10px;
+            background: black;
+            color: #aaafb7;
             &:last-child {
                 border-bottom: none;
             }
+            li a {
+                border-bottom : 1px solid #3b434c!important;
+            }
         }
+        .media > a {
+            display: block;
+            clear: both;
+            font-weight: 300;
+            line-height: 20px;
+            white-space: normal;
+            font-size: 13px;
+            padding: 16px 15px 18px;
+            text-shadow: none;
+        }
+
         .media-body {
             h5 {
                 font-size: 13px;
@@ -34,7 +50,18 @@ $topnav-background-color: #fff;
                 margin: 0;
             }
         }
-        
-       
+    }
+
+    .lable {
+        text-shadow: none!important;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 3px 6px;
+        color: #fff;
+    }
+
+    .lable-primary {
+        background-color: #337ab7;
     }
 }
+
